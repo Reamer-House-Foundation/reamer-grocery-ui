@@ -5,6 +5,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
+import { environment } from '../environments/environment';
 import { AuthService } from './auth.service';
 import { LoginComponent } from './login/login.component';
 import { GroceryListComponent } from './grocery-list/grocery-list.component';
@@ -38,7 +39,7 @@ const appRoutes: Routes = [
 ];
 
 @NgModule({
-  imports:      [
+  imports: [
       BrowserModule,
       FormsModule,
       ReactiveFormsModule,

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { AuthService } from './auth.service';
+import { environment } from './../environments/environment';
 
 @Component({
   selector: 'my-app',
@@ -11,5 +12,7 @@ export class AppComponent  {
 
   constructor(
     private authService: AuthService,
-  ) {}
+  ) {
+    console.log("Production? : ", environment.production);
+  }
 }
