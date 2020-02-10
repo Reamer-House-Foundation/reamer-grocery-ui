@@ -1,7 +1,21 @@
 <h3> Inventory </h3>
 
-<div class="panel panel-default" *ngFor="let item of items">
-  <div class="panel-body">
-    <app-grocery-list-item [item]="item"></app-grocery-list-item>
-  </div>
+<div class="panel panel-default">
+  <table class="table table-striped table-hover">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Count</th>
+        <th>Units</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let item of items">
+        <td>{{ item.name }}</td>
+        <td>{{ item.count }}</td>
+        <td>{{ item.units }}</td>
+      </tr>
+    </tbody>
+  </table>
 </div>
