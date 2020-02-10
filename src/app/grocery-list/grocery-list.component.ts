@@ -21,8 +21,4 @@ export class GroceryListComponent implements OnInit {
   }
 
   ngOnInit() {  }
-
-  setSelected(item) {
-    console.log(item);
-  }
 }

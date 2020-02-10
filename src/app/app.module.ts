@@ -32,6 +32,11 @@ const appRoutes: Routes = [
     canActivate: [AuthGuardService]
   },
   {
+    path: 'item/:itemName',
+    component: GroceryListItemComponent,
+    canActivate: [AuthGuardService]
+  },
+  {
     path: 'new',
     component: NewItemComponent,
     canActivate: [AuthGuardService]

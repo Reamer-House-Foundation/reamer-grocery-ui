@@ -19,6 +19,10 @@ export class InventoryService {
     return of(this.items);
   }
 
+  getItemByName(name: String): GroceryItem {
+    return this.items.find((item: GroceryItem) => item.name === name);
+  }
+
   addItem(item: GroceryItem) {
     this.items.push(item);
   }
