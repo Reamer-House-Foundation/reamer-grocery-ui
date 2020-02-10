@@ -1,0 +1,32 @@
+<div class="home container">
+  <h1>
+    Reamer Grocery App
+  </h1>
+
+  <button
+  type="button"
+  class="btn btn-default"
+  [routerLink]="['/login']"
+  *ngIf="!authenticated"
+  >
+    Login
+  </button>
+
+  <div *ngIf="authenticated">
+    <button
+      type="button"
+      class="btn btn-default"
+      [routerLink]="['/inventory']"
+    >
+      Inventory
+    </button>
+
+    <button 
+      type="button"
+      class="btn btn-default"
+      [routerLink]="['/new']"
+    >
+      New Trip
+    </button>
+  </div>
+</div>

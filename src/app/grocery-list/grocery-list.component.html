@@ -1,0 +1,7 @@
+<h3> Inventory </h3>
+
+<div class="panel panel-default" *ngFor="let item of items">
+  <div class="panel-body">
+    <app-grocery-list-item [item]="item"></app-grocery-list-item>
+  </div>
+</div>
