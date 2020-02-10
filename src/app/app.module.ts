@@ -43,7 +43,7 @@ const appRoutes: Routes = [
       BrowserModule,
       FormsModule,
       ReactiveFormsModule,
-      RouterModule.forRoot(appRoutes)
+      RouterModule.forRoot(appRoutes, {useHash: true})
     ],
   declarations: [
     AppComponent, 
@@ -57,7 +57,7 @@ const appRoutes: Routes = [
     ],
   bootstrap:    [ AppComponent ],
   providers: [
-    { provide: APP_BASE_HREF, useValue: environment.baseRef },
+    //{ provide: APP_BASE_HREF, useValue: environment.baseRef },
     AuthService,
     InventoryService,
     NewItemCartService,

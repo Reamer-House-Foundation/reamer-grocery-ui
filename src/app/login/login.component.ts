@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 import { AuthService, UserDeets } from '../auth.service';
 
@@ -11,11 +11,13 @@ import { AuthService, UserDeets } from '../auth.service';
 })
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
-
+  returnURL: string;
+  
   constructor(
     private authService: AuthService,
     private formBuilder: FormBuilder,
-    private router: Router
+    private router: Router,
+    private route: ActivatedRoute
   ) {
     const formData: UserDeets = {
       userEmail: null,
@@ -39,7 +41,7 @@ export class LoginComponent implements OnInit {
       this.authService.loginUser(formData)
         .then(() => {
           this.loginForm.reset();
-          this.router.navigate(['/inventory']);
+          this.router.navigate([this.returnURL]);
         })
         .catch((error) => {
           console.error(error);
@@ -48,8 +50,10 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit() {
-    if (this.authService.isAuthenticated()) {
-      this.router.navigate(['/inventory']);
-    }
+    // reset login status
+    this.authService.logoutUser();
+
+    // get return url from route parameters or default to '/'
+    this.returnURL = this.route.snapshot.queryParams['returnURL'] || '/dashboard';
   }
 }
