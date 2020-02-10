@@ -13,6 +13,8 @@ export class AppComponent  {
   constructor(
     private authService: AuthService,
   ) {
-    console.log("Production? : ", environment.production);
+    if (!environment.production) {
+      console.log("Production? : ", environment.production);
+    }
   }
 }
