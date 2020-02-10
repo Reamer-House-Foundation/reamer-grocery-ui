@@ -57,7 +57,7 @@ const appRoutes: Routes = [
     ],
   bootstrap:    [ AppComponent ],
   providers: [
-    { provide: APP_BASE_HREF, useValue: '' },
+    { provide: APP_BASE_HREF, useValue: environment.baseRef },
     AuthService,
     InventoryService,
     NewItemCartService,
