@@ -1,48 +1,46 @@
-<nav class="navbar navbar-default" *ngIf="authenticated">
-  <div class="container-fluid">
-
-    <div class="navbar-header">
-      <a
-      class="navbar-brand"
-      [routerLink]="['/']">
-        Reamer Grocery App
-      </a>
-    </div>
-
-    <ul class="nav navbar-nav">
-      <li>
-        <a [routerLink]="['/dashboard']">
+<nav class="navbar navbar-expand-lg navbar-light bg-light" *ngIf="authenticated">
+  <a
+  class="navbar-brand"
+  [routerLink]="['/']">
+    Reamer Grocery App
+  </a>
+  <div class="collapse navbar-collapse">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/dashboard']" [routerLinkActive]="['active']">
           Dashboard
         </a>
       </li>
-
-      <li>
-        <a [routerLink]="['/inventory']">
+  
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/inventory']" [routerLinkActive]="['active']">
           Inventory
         </a>
       </li>
-      <li>
+
+      <li class="nav-item">
         <button
         type="button"
-        class="btn btn-default navbar-btn"
+        class="btn btn-outline-secondary"
         [routerLink]="['/new']"
         >
           New Trip
         </button>  
       </li>
     </ul>
-
-    <ul class="nav navbar-nav navbar-right">
-      <li>
-        <button
-          type="button"
-          class="btn btn-default navbar-btn"
-          (click)="signOut()"
-        >
-          Sign Out
-        </button>
-      </li>
-    </ul>
-
   </div>
+
+
+  <ul class="nav navbar-nav navbar-right">
+    <li>
+      <button
+        type="button"
+        class="btn btn-outline-secondary"
+        (click)="signOut()"
+      >
+        Sign Out
+      </button>
+    </li>
+  </ul>
+
 </nav>

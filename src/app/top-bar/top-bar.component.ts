@@ -13,7 +13,8 @@ export class TopBarComponent implements OnInit {
   constructor(
     public router: Router,
     public authService: AuthService
-  ) {}
+  ) {
+  }
 
   ngOnInit() {
     this.authService.getLoginState()
