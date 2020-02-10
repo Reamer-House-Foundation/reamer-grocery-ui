@@ -6,13 +6,14 @@
   <div class="row">
 
     <div class="login-panel col col-xl-6 col-lg-6 col-md-6 panel panel-default">
-      <form [formGroup]="loginForm" (ngSubmit)="onSubmit(loginForm.value)">
+      <form autocomplete="on" [formGroup]="loginForm" (ngSubmit)="onSubmit(loginForm.value)">
 
         <div class="form-group">
           <label for="email-login">Email</label>
           <input
           type="email"
           class="form-control"
+          autocomplete="email"
           id="email-login"
           aria-describedby="emailHelp"
           placeholder="Enter email"
@@ -28,9 +29,11 @@
           <input
           type="password"
           class="form-control"
+          autocomplete="current-password"
           id="login-password"
           placeholder="Password"
-          formControlName="userPassword">
+          formControlName="userPassword"
+          >
         </div>
 
         <button type="submit" class="btn btn-primary"> Login </button>
@@ -39,7 +42,7 @@
     </div>
 
     <div class="col col-xl-6 col-lg-6 col-md-6">
-      aasdf
+      <span class="glyphicon glyphicon-trash glyph"></span> 
     </div>
 
   </div>

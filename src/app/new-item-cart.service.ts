@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { GroceryItem } from '../models/grocery-item.model';
+import { GroceryItem } from './models/grocery-item.model';
 import { Subject, Observable, of } from 'rxjs';
 import { debounce } from './utils/debounce'
 import { InventoryService } from './inventory.service';

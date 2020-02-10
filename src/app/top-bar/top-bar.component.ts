@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthService, LoginState } from '../auth.service.ts';
+import { AuthService, LoginState } from '../auth.service';
 
 @Component({
   selector: 'app-top-bar',

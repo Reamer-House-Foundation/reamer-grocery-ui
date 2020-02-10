@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { APP_BASE_HREF } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -51,8 +52,15 @@ const appRoutes: Routes = [
     GroceryListItemComponent,
     TopBarComponent,
     HomeComponent,
+    UserDashboardComponent,
     ],
   bootstrap:    [ AppComponent ],
-  providers: [AuthService, InventoryService, NewItemCartService, AuthGuardService]
+  providers: [
+    { provide: APP_BASE_HREF, useValue: '' },
+    AuthService,
+    InventoryService,
+    NewItemCartService,
+    AuthGuardService
+  ]
 })
 export class AppModule { }
