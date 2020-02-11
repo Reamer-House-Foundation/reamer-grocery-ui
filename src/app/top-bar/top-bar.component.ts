@@ -2,12 +2,16 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService, LoginState } from '../auth.service';
 
+import { faShoppingBasket } from '@fortawesome/free-solid-svg-icons';
+
 @Component({
   selector: 'app-top-bar',
   templateUrl: './top-bar.component.html',
   styleUrls: ['./top-bar.component.css']
 })
 export class TopBarComponent implements OnInit {
+  faShoppingBasket = faShoppingBasket;
+  
   authenticated: boolean = false;
 
   constructor(
