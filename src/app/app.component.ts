@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { AuthService } from './auth.service';
 import { environment } from './../environments/environment';
 
+import { faCarrot } from '@fortawesome/free-solid-svg-icons';
+
 @Component({
   selector: 'my-app',
   templateUrl: './app.component.html',
@@ -10,6 +12,10 @@ import { environment } from './../environments/environment';
 export class AppComponent  {
   appName = 'Reamer Grocery App';
 
+  icons = [
+    faCarrot
+  ];
+  
   constructor(
     private authService: AuthService,
   ) {

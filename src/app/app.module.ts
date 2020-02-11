@@ -1,11 +1,12 @@
 import { NgModule } from '@angular/core';
 import { APP_BASE_HREF } from '@angular/common';
+import { environment } from '../environments/environment';
 import { RouterModule, Routes } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 import { AppComponent } from './app.component';
-import { environment } from '../environments/environment';
 import { AuthService } from './auth.service';
 import { LoginComponent } from './login/login.component';
 import { GroceryListComponent } from './grocery-list/grocery-list.component';
@@ -48,6 +49,7 @@ const appRoutes: Routes = [
       BrowserModule,
       FormsModule,
       ReactiveFormsModule,
+      FontAwesomeModule,
       RouterModule.forRoot(appRoutes, {useHash: true})
     ],
   declarations: [
