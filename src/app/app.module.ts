@@ -50,7 +50,7 @@ const appRoutes: Routes = [
       FormsModule,
       ReactiveFormsModule,
       FontAwesomeModule,
-      RouterModule.forRoot(appRoutes, {useHash: true})
+      RouterModule.forRoot(appRoutes)
     ],
   declarations: [
     AppComponent, 
