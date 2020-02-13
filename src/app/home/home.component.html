@@ -6,13 +6,13 @@
   <button
   type="button"
   class="btn btn-outline-secondary"
-  [routerLink]="['/login']"
-  *ngIf="!authenticated"
+  (click)="this.signIn()"
+  *ngIf="!this.authService.loggedIn"
   >
     Login
   </button>
 
-  <div *ngIf="authenticated">
+  <div *ngIf="this.authService.loggedIn">
     <button
       type="button"
       class="btn btn-outline-secondary"

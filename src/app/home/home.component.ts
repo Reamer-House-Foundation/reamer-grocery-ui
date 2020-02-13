@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../auth.service';
+import { share } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-home',
@@ -7,17 +9,18 @@ import { AuthService } from '../auth.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  authenticated: boolean;
 
   constructor(
     public authService: AuthService
-  ) { }
+  ) {}
 
-  ngOnInit() {
-    this.authenticated = this.authService.isAuthenticated();
-    this.authService.getLoginState()
-    .subscribe(loginState => {
-      this.authenticated = this.authService.isAuthenticated();
-    });
+  ngOnInit(): void {}
+
+  signIn() {
+    this.authService.login('/dashboard');
+  }
+
+  signOut() {
+    this.authService.logout();
   }
 }

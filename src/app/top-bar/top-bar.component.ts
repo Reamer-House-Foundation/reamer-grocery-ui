@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthService, LoginState } from '../auth.service';
+import { AuthService } from '../auth.service';
+import { share } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 
 import { faShoppingBasket } from '@fortawesome/free-solid-svg-icons';
 
@@ -11,24 +13,19 @@ import { faShoppingBasket } from '@fortawesome/free-solid-svg-icons';
 })
 export class TopBarComponent implements OnInit {
   faShoppingBasket = faShoppingBasket;
-  
-  authenticated: boolean = false;
 
   constructor(
     public router: Router,
     public authService: AuthService
-  ) {
-  }
+  ) {}
 
-  ngOnInit() {
-    this.authService.getLoginState()
-    .subscribe((loginState: LoginState) => {
-      this.authenticated = this.authService.isAuthenticated();
-    });
+  ngOnInit() { }
+
+  signIn() {
+    this.authService.login('/inventory');
   }
 
   signOut() {
-    this.authService.logoutUser();
-    this.router.navigate(['/']);
+    this.authService.logout();
   }
 }

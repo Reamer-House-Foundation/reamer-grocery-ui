@@ -42,22 +42,23 @@ export class LoginComponent implements OnInit {
 
   onSubmit(formData: UserDeets) {
     if (this.validateParams(formData)) {
-      this.authService.loginUser(formData)
+      /*
+      this.authService.login(formData)
         .then(() => {
           this.loginForm.reset();
           this.router.navigate([this.returnURL]);
         })
         .catch((error) => {
           console.error(error);
-        });
+        });*/
     }
   }
 
   ngOnInit() {
     // reset login status
-    this.authService.logoutUser();
+    this.authService.logout();
 
     // get return url from route parameters or default to '/'
-    this.returnURL = this.route.snapshot.queryParams['returnURL'] || '/dashboard';
+    // this.returnURL = this.route.snapshot.queryParams['returnURL'] || '/dashboard';
   }
 }

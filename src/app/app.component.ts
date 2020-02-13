@@ -14,7 +14,6 @@ export class AppComponent  {
     private authService: AuthService,
   ) {
     if (environment.production === false) {
-      console.log("Production? : ", environment.production);
       console.log("Running with environment variables: ", environment);
     }
   }
