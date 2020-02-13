@@ -79,8 +79,6 @@ export class AuthService {
           // NOTE: you could pass options here if needed
           return this.getUser$();
         }
-        console.log("AuthService::localAuthSetup() : loggedIn : ", loggedIn);
-        
         // If not authenticated, return stream that emits 'false'
         return of(loggedIn);
       })
