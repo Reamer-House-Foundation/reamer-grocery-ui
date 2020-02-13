@@ -124,7 +124,7 @@ export class AuthService {
     this.auth0Client$.subscribe((client: Auth0Client) => {
       // Call method to log in
       client.loginWithRedirect({
-        redirect_uri: `${environment.authRedirectURI}`,
+        redirect_uri: environment.authRedirectURI,
         appState: { target: redirectPath }
       });
     });

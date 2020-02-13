@@ -10,7 +10,7 @@ export const environment: Environment = {
   // TODO: Update auth variables for production. Currently still the same as dev.
   authDomain: 'dev-tetrovolt.auth0.com',
   authClientID: '3U4UPMPaBKrI43EWtvIgkkTcYyJfq3ja',
-  authRedirectURI: 'https://tetrovolt.github.io/reamer-grocery-ui/',
+  authRedirectURI: 'https://tetrovolt.github.io/reamer-grocery-ui',
 
   apiBase: '',
 };
