@@ -28,7 +28,7 @@ export class AuthService {
     createAuth0Client({
       domain: environment.authDomain,
       client_id: environment.authClientID,
-      redirect_uri: `${window.location.origin}`
+      redirect_uri: environment.authRedirectURI
     })
   ) as Observable<Auth0Client>).pipe(
     shareReplay(1), // Every subscription receives the same shared value
@@ -136,7 +136,7 @@ export class AuthService {
       // Call method to log out
       client.logout({
         client_id: environment.authClientID,
-        returnTo: `${window.location.origin}`
+        returnTo: environment.authRedirectURI
       });
     });
   }
