@@ -9,6 +9,7 @@ export const environment: Environment = {
   
   authDomain: 'dev-tetrovolt.auth0.com',
   authClientID: '3U4UPMPaBKrI43EWtvIgkkTcYyJfq3ja',
+  authRedirectURI: 'http://localhost:4200',
 
   apiBase: 'http://localhost:4000',
 };

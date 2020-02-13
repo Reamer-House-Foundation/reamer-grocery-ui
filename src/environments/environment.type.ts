@@ -7,6 +7,7 @@ export interface Environment {
 
   authDomain: string;
   authClientID: string;
+  authRedirectURI: string;
   
   apiBase: string;
 };
