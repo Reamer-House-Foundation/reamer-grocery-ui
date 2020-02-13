@@ -4,5 +4,5 @@ export const environment = {
   apiBase: '',
   env: 'dev',
 
-  baseRef: '/reamer-grocery-ui/' // for gh-pages
+  baseRef: '/'
 };
