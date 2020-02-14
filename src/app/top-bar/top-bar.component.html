@@ -12,8 +12,18 @@
   </button>
 
   <a
-  class="navbar-brand"
-  [routerLink]="['/']"
+    class="navbar-brand"
+    [routerLink]="['/']"
+    *ngIf = "!this.authService.loggedIn"
+  >
+    <fa-icon [icon]="faShoppingBasket" size="lg"></fa-icon>
+    Reamer Grocery App
+  </a>
+
+  <a
+    class="navbar-brand"
+    [routerLink]="['/dashboard']"
+    *ngIf = "this.authService.loggedIn"
   >
     <fa-icon [icon]="faShoppingBasket" size="lg"></fa-icon>
     Reamer Grocery App
