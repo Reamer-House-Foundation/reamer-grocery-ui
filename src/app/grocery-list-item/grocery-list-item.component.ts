@@ -1,25 +1,30 @@
-import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { GroceryItem } from '../models/grocery-item.model';
 import { InventoryService } from '../inventory.service';
+
+import { map, concatAll } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-grocery-list-item',
   templateUrl: './grocery-list-item.component.html',
   styleUrls: ['./grocery-list-item.component.css']
 })
-export class GroceryListItemComponent implements OnInit{
-  item: GroceryItem;
+export class GroceryListItemComponent implements OnInit {
+  item$ : Observable<GroceryItem> = this.route.paramMap.pipe(
+    map(params => params.get('itemName')),
+    map(itemName => this.inventoryService.getItemByName(itemName)),
+    concatAll(),
+  );
 
   constructor(
     private route: ActivatedRoute,
     private inventoryService: InventoryService
-  ) { }
-
-  ngOnInit() {
-    this.route.paramMap.subscribe(params => {
-      this.item = this.inventoryService.getItemByName(params.get('itemName'));
-    });
+  ) {
+    
   }
+
+  ngOnInit() { }
 
 }

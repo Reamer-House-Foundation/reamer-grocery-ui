@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { InventoryService } from '../inventory.service';
+import { Observable } from 'rxjs';
 import { GroceryItem } from '../models/grocery-item.model';
 
 @Component({
@@ -8,17 +9,12 @@ import { GroceryItem } from '../models/grocery-item.model';
   styleUrls: ['./grocery-list.component.css']
 })
 export class GroceryListComponent implements OnInit {
-
-  items: GroceryItem[];
-
+  
+  groceryList$: Observable<GroceryItem[]> = this.inventoryService.getItems();
+  
   constructor(
     private inventoryService: InventoryService
-  ) {
-    this.inventoryService.getItems()
-    .subscribe((items: GroceryItem[]) => {
-      this.items = items;
-    });
-  }
+  ) {}
 
   ngOnInit() {  }
 }

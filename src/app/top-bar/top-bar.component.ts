@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
-import { share } from 'rxjs/operators';
-import { Observable } from 'rxjs';
 
 import { faShoppingBasket } from '@fortawesome/free-solid-svg-icons';
+import { map, tap } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-top-bar',
@@ -13,6 +13,11 @@ import { faShoppingBasket } from '@fortawesome/free-solid-svg-icons';
 })
 export class TopBarComponent implements OnInit {
   faShoppingBasket = faShoppingBasket;
+
+  loggedIn$: Observable<boolean> = this.authService.loggedIn$;
+  brandLink$: Observable<string> = this.authService.isAuthenticated$.pipe(
+    map((loggedIn: boolean) => (loggedIn ? '/dashboard' : '/'))
+  );
 
   constructor(
     public router: Router,

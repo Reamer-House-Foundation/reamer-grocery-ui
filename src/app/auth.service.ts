@@ -7,18 +7,6 @@ import { Router } from '@angular/router';
 
 import { environment } from '../environments/environment';
 
-export enum LoginState {
-  LOGGED_IN = 'LOGGED_IN',
-  LOGGED_OUT = 'LOGGED_OUT',
-  LOGGING_IN = 'LOGGING_IN',
-  LOGIN_ERROR = 'LOGGIN_ERROR'
-};
-
-export interface UserDeets {
-  userEmail: string,
-  userPassword: string,
-};
-
 @Injectable({
   providedIn: 'root',
 })
@@ -34,22 +22,34 @@ export class AuthService {
     shareReplay(1), // Every subscription receives the same shared value
     catchError(err => throwError(err))
   );
+
   // Define observables for SDK methods that return promises by default
   // For each Auth0 SDK method, first ensure the client instance is ready
   // concatMap: Using the client instance, call SDK method; SDK returns a promise
   // from: Convert that resulting promise into an observable
-  isAuthenticated$ = this.auth0Client$.pipe(
+  isAuthenticated$: Observable<boolean> = this.auth0Client$.pipe(
     concatMap((client: Auth0Client) => from(client.isAuthenticated())),
-    tap((res: boolean) => this.loggedIn = res)
+    tap((res: boolean) => this.setLoggedIn(res))
   );
-  handleRedirectCallback$ = this.auth0Client$.pipe(
+
+  handleRedirectCallback$: Observable<RedirectLoginResult> = this.auth0Client$.pipe(
     concatMap((client: Auth0Client) => from(client.handleRedirectCallback()))
   );
+
   // Create subject and public observable of user profile data
-  private userProfileSubject$ = new BehaviorSubject<any>(null);
-  userProfile$ = this.userProfileSubject$.asObservable();
+  private userProfileSubject$: BehaviorSubject<any> = new BehaviorSubject<any>(null);
+  userProfile$: Observable<any> = this.userProfileSubject$.asObservable();
+
   // Create a local property for login status
-  loggedIn: boolean = null;
+  private _loggedIn: boolean = null;
+  private _loggedIn$ = new BehaviorSubject<boolean>(this._loggedIn); 
+  private setLoggedIn(value: boolean) {
+    this._loggedIn$.next(value);
+    this._loggedIn = value;
+  }
+  get loggedIn$() {
+    return this._loggedIn$.asObservable();
+  }
 
   constructor(private router: Router) {
     // On initial load, check authentication state with authorization server

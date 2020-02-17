@@ -4,29 +4,10 @@
   </h1>
 
   <button
-  type="button"
-  class="btn btn-outline-secondary"
-  (click)="this.signIn()"
-  *ngIf="!this.authService.loggedIn"
+    type="button"
+    class="btn btn-outline-secondary"
+    (click)="this.signIn()"
   >
     Login
   </button>
-
-  <div *ngIf="this.authService.loggedIn">
-    <button
-      type="button"
-      class="btn btn-outline-secondary"
-      [routerLink]="['/inventory']"
-    >
-      Inventory
-    </button>
-
-    <button 
-      type="button"
-      class="btn btn-outline-secondary"
-      [routerLink]="['/new']"
-    >
-      New Trip
-    </button>
-  </div>
 </div>

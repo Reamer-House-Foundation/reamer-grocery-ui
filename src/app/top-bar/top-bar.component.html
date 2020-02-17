@@ -13,23 +13,13 @@
 
   <a
     class="navbar-brand"
-    [routerLink]="['/']"
-    *ngIf = "!this.authService.loggedIn"
+    [routerLink]="(this.brandLink$ | async)"
   >
     <fa-icon [icon]="faShoppingBasket" size="lg"></fa-icon>
     Reamer Grocery App
   </a>
 
-  <a
-    class="navbar-brand"
-    [routerLink]="['/dashboard']"
-    *ngIf = "this.authService.loggedIn"
-  >
-    <fa-icon [icon]="faShoppingBasket" size="lg"></fa-icon>
-    Reamer Grocery App
-  </a>
-
-  <ng-container *ngIf="this.authService.loggedIn">
+  <ng-container *ngIf="this.loggedIn$ | async">
     <div class="collapse navbar-collapse" id="navbarNavItems">
 
       <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
