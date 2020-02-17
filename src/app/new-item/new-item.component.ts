@@ -12,7 +12,7 @@ import { GroceryItem } from '../models/grocery-item.model';
 })
 export class NewItemComponent implements OnInit {
   newItemForm: FormGroup;
-  cartItems: GroceryItem[];
+  cartItems$: Observable<GroceryItem[]> = this.newItemCartService.getItems();
   disabled: boolean = false;
 
   constructor(
@@ -26,18 +26,12 @@ export class NewItemComponent implements OnInit {
     });
   }
 
-  ngOnInit() {
-    this.newItemCartService.getItems()
-    .subscribe(items => this.cartItems = items);
-  }
+  ngOnInit() {}
 
   checkOut() {
     if (this.disabled === true) return;
-    
     this.disabled = true;
-    this.newItemCartService.checkOut(() => {
-      this.disabled = false;
-    });
+    this.newItemCartService.checkOut(() => this.disabled = false);
   }
 
   onSubmit(newItem) {

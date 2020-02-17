@@ -60,7 +60,7 @@
       </thead>
     
       <tbody>
-        <tr *ngFor="let cartItem of cartItems">
+        <tr *ngFor="let cartItem of (this.cartItems$ | async)">
           <td>{{ cartItem.name }}</td>
           <td>{{ cartItem.count }}</td>
           <td>{{ cartItem.units }}</td>

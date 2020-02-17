@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { GroceryItem } from '../models/grocery-item.model';
 import { InventoryService } from '../inventory.service';
 
-import { map, concatAll } from 'rxjs/operators';
+import { map, concatAll, take } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -13,6 +13,7 @@ import { Observable } from 'rxjs';
 })
 export class GroceryListItemComponent implements OnInit {
   item$ : Observable<GroceryItem> = this.route.paramMap.pipe(
+    take(1),
     map(params => params.get('itemName')),
     map(itemName => this.inventoryService.getItemByName(itemName)),
     concatAll(),
