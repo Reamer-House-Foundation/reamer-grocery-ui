@@ -3,4 +3,5 @@ export interface GroceryItem {
   name: String,
   count: number,
   units?: String,
+  owner?: String,
 };

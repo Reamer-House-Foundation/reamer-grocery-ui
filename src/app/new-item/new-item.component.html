@@ -22,7 +22,7 @@
          formControlName="count"
         >
       </div>
-    
+
       <div class="form-group">
         <label for="new-item-units">Units</label>
         <input
@@ -33,7 +33,17 @@
          formControlName="units"
         >
       </div>
-    
+
+      <div class="form-group">
+        <label for="new-item-owner">Owner</label>
+        <input
+         type="text"
+         class="form-control"
+         id="new-item-owner"
+         formControlName="owner"
+        >
+      </div>
+
       <button
        type="submit"
        class="btn btn-default"
@@ -41,7 +51,7 @@
         Add New Item
       </button>
     </form>
-    
+
     <button
      class="btn btn-default"
      [disabled]="disabled"
@@ -56,14 +66,16 @@
           <th>Name</th>
           <th>Count</th>
           <th>Units</th>
+          <th>Owner</th>
         </tr>
       </thead>
-    
+
       <tbody>
         <tr *ngFor="let cartItem of (this.cartItems$ | async)">
           <td>{{ cartItem.name }}</td>
           <td>{{ cartItem.count }}</td>
           <td>{{ cartItem.units }}</td>
+          <td>{{ cartItem.owner }}</td>
         </tr>
       </tbody>
     </table>

@@ -23,7 +23,7 @@ export class GroceryListItemComponent implements OnInit {
     private route: ActivatedRoute,
     private inventoryService: InventoryService
   ) {
-    
+
   }
 
   ngOnInit() { }

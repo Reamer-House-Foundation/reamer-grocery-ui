@@ -23,6 +23,7 @@ export class NewItemComponent implements OnInit {
       name: null,
       count: null,
       units: null,
+      owner: "Community",
     });
   }
 

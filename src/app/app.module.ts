@@ -53,10 +53,10 @@ const appRoutes: Routes = [
       RouterModule.forRoot(appRoutes)
     ],
   declarations: [
-    AppComponent, 
-    LoginComponent, 
-    GroceryListComponent, 
-    NewItemComponent, 
+    AppComponent,
+    LoginComponent,
+    GroceryListComponent,
+    NewItemComponent,
     GroceryListItemComponent,
     TopBarComponent,
     HomeComponent,

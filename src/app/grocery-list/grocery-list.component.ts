@@ -9,9 +9,9 @@ import { GroceryItem } from '../models/grocery-item.model';
   styleUrls: ['./grocery-list.component.css']
 })
 export class GroceryListComponent implements OnInit {
-  
+
   groceryList$: Observable<GroceryItem[]> = this.inventoryService.getItems();
-  
+
   constructor(
     private inventoryService: InventoryService
   ) {}

@@ -7,14 +7,15 @@ import { GroceryItem } from './models/grocery-item.model';
 export class InventoryService {
 
   items: GroceryItem[] = [
-    { name: 'salt', count: 1},
-    { name: 'pepper', count: 1},
+    { name: 'salt', count: 1, units: "Container", owner: "Community"},
+    { name: 'pepper', count: 1, units: "Container", owner: "Community"},
   ];
   items$: BehaviorSubject<GroceryItem[]> = new BehaviorSubject<GroceryItem[]>(this.items);
 
   constructor() {}
 
   private setItems(newItems: GroceryItem[]): void {
+      console.log(newItems);
     this.items$.next(newItems);
     this.items = newItems;
   }
