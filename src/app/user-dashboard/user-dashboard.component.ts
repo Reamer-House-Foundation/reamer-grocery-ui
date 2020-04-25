@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { InventoryService } from '../inventory.service';
 
 @Component({
   selector: 'app-user-dashboard',
@@ -7,9 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserDashboardComponent implements OnInit {
 
-  constructor() { }
+  constructor(private inventoryService: InventoryService) { }
 
   ngOnInit() {
+  }
+
+  getData() {
+    console.log("In Get Data");
+    this.inventoryService.queryBackend()
+        .subscribe(resp => {
+            console.log(resp);
+        });
   }
 
 }

@@ -1,7 +1,10 @@
 import { Injectable } from '@angular/core';
-import { Observable, of, BehaviorSubject } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { Observable, of, BehaviorSubject, throwError} from 'rxjs';
+import { map, catchError, retry } from 'rxjs/operators';
 import { GroceryItem } from './models/grocery-item.model';
+
+// For querying the backend server
+import { HttpClient } from '@angular/common/http';
 
 @Injectable()
 export class InventoryService {
@@ -12,7 +15,7 @@ export class InventoryService {
   ];
   items$: BehaviorSubject<GroceryItem[]> = new BehaviorSubject<GroceryItem[]>(this.items);
 
-  constructor() {}
+  constructor(private http: HttpClient) {}
 
   private setItems(newItems: GroceryItem[]): void {
       console.log(newItems);
@@ -37,5 +40,11 @@ export class InventoryService {
 
   addItems(items: GroceryItem[]): void {
     this.setItems([...this.items, ...items]);
+  }
+
+  // Not 100% if this is the correct place to do this, but this is mainly just
+  // for proof of concept anyways.  We can discuss and move this later
+  queryBackend() {
+    return this.http.get("api/graphql?query={user(id:\"1\"){name}}");
   }
 }

@@ -19,6 +19,8 @@ import { NewItemCartService } from './new-item-cart.service';
 import { HomeComponent } from './home/home.component';
 import { AuthGuardService } from './auth-guard.service';
 
+import { HttpClientModule } from '@angular/common/http';
+
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
   {
@@ -50,7 +52,9 @@ const appRoutes: Routes = [
       FormsModule,
       ReactiveFormsModule,
       FontAwesomeModule,
-      RouterModule.forRoot(appRoutes)
+      RouterModule.forRoot(appRoutes),
+      HttpClientModule,
+
     ],
   declarations: [
     AppComponent,
